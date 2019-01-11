@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Validator;
 use Illuminate\Http\Request;
 use App\Post;
 class PostsController extends Controller
@@ -19,12 +19,26 @@ class PostsController extends Controller
     }
     //add new post
     function add(Request $request){
-        $post= Post::updateOrCreate(
-            [
-                'title'=>$request->title,
-                'content'=>$request->content
-            ]
+        
+        //validation goes here
+        $rules=[
+            'title'=>'required|unique:post',
+            'content'=>'required|max:255|min:100',
+          ];
+        // $messages = [
+        //         'title.required'=>'Butangi hin title!',
+        //         'content.required'=>'Butangi hin content'
+        // ];
+        $validator=Validator::make(
+            $request->all()
+            ,$rules
+            // ,$messages
         );
+        if($validator->fails()){
+            return back()
+            ->withErrors($validator)->withInput();
+        }
+        $post= Post::updateOrCreate($request->all());
         return redirect()->route('posts');
     }
 

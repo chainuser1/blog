@@ -8,7 +8,7 @@ class Post extends Model
 {
     //@optional
     protected $table="post";
-    protected $fillable=['title','content'];
+    protected $fillable=['id','title', 'content'];
 
     function getTitleAttribute($value){
         //mutate our post title first letter
