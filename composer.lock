@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "857edb3d2306e7d65e7a5e492a3981ed",
+    "content-hash": "fe78810a849abdb7d6d7733fee1b5e03",
     "packages": [
         {
             "name": "carbondate/carbon",

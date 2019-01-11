@@ -7,27 +7,40 @@ use App\Post;
 class PostsController extends Controller
 {
     //
-    function index(){
-
+    function index(Post $post){
+       $posts=$post->orderBy('updated_at','desc')->get();
+       return view('posts')->withPosts($posts);
     }
-
+    //search title the return posts with similar title
+    function find(Request $req){
+        $posts=Post::where('title',
+            'like','%'.$req->search.'%')->get();
+        return view('posts')->withPosts($posts);
+    }
+    //add new post
     function add(Request $request){
-        $post=new Post;
-        $post->title=$request->title;
-        $post->content=$request->pcontent;
-        $post->save();
-//        return view('post',['status'=>'Your post has been saved!']);
+        $post= Post::updateOrCreate(
+            [
+                'title'=>$request->title,
+                'content'=>$request->content
+            ]
+        );
+        return redirect()->route('posts');
     }
 
     function new_post(){
         return view('post');
     }
 
-    function edit(Request $request, $id){
-
+    function edit($id){
+        $post=Post::find($id);
+        return view('post')->withPost($post);
     }
 
-    function delete($id){
 
+    function delete($id){
+       $post=Post::find($id);
+       $post->delete();
+       return redirect()->route('posts');
     }
 }
