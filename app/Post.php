@@ -4,12 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\User;
 class Post extends Model
 {
     //@optional
     protected $table="post";
-    protected $fillable=['id','title', 'content'];
+    protected $fillable=['user_id','title', 'content'];
 
+    public function user(){
+       return $this->belongsTo(User::class);
+    }
+   
     function getTitleAttribute($value){
         //mutate our post title first letter
         return ucfirst($value);

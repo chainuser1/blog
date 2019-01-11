@@ -4,6 +4,7 @@
 <div class="col-md-7">
     <table  class="table table-striped">
         <thead class="text-info">
+            <th>User</th>
             <th class="text-capitalize">Post ID</th>
             <th class="text-capitalize">Post Title</th>
             <td class="text-capitalize">Post Created</td>
@@ -13,6 +14,7 @@
         <tbody>
         @foreach($posts as $post)
         <tr>
+            <td>{{$post->user->name}}</td>
             <td>{{$post->id}}</td>
             <td>{{$post->title}}</td>
             <td>{{$post->created_at}}</td>
