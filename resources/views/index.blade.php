@@ -18,5 +18,6 @@
     </div>
 </div>
  {{Html::script('js/app.js')}}
+ {{Html::script('js/custom.js')}}
  </body>
 </html>

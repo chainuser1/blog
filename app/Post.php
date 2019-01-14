@@ -10,12 +10,11 @@ class Post extends Model
     //@optional
     protected $table="post";
     protected $fillable=['user_id','title', 'content'];
-
     public function user(){
        return $this->belongsTo(User::class);
     }
    
-    function getTitleAttribute($value){
+    function gestTitleAttribute($value){
         //mutate our post title first letter
         return ucfirst($value);
     }
