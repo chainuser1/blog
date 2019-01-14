@@ -37,5 +37,10 @@ Route::middleware(['auth.basic'])->group(function(){
     ->name('post.delete');
     Route::get('posts/post/', 'PostsController@new_post')
     ->name('posts.post');
+
+    //comment routing map
+
+    Route::post('post/{user_id}/{post_id}',
+       'CommentsController@store')->name('post.comment');
 });
 

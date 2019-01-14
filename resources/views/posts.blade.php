@@ -12,9 +12,10 @@
             <th class="text-center"  colspan="3">Action</th>
         </thead>
         <tbody>
-        @foreach($posts as $post)
-        <tr>
-            <td>{{$post->user->name}}</td>
+          @if(!empty($posts))
+            @foreach($posts as $post)
+           <tr>
+            <td><a>{{$post->user->name}}</a></td>
             <td>{{$post->id}}</td>
             <td>{{$post->title}}</td>
             <td>{{$post->created_at}}</td>
@@ -29,7 +30,12 @@
             <td><a  class="btn btn-danger" href="{{route('post.delete',$post->id)}}">Delete</a></td>
         </tr>
         @endforeach
-        </tbody>
+      @else
+        <tr class="text-danger" colspan="6">
+            <td>There are no posts vailable</td>
+        </tr>
+       @endif 
+     </tbody>
     </table>
 </div>s
 @endsection
