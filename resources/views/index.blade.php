@@ -1,6 +1,9 @@
 <html>
 <head>
  {{Html::style('css/app.css')}}
+ <meta name="_token" content="{{csrf_token()}}" />
+ {{Html::script('js/jquery-min.js')}}
+
 </head>
 <body>
 <div class="container">
@@ -19,5 +22,6 @@
 </div>
  {{Html::script('js/app.js')}}
  {{Html::script('js/custom.js')}}
+ {{Html::script('js/comment-ajax.js')}}
  </body>
 </html>

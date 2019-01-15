@@ -16,22 +16,24 @@
        <h5>Comments here!!!</h5>
        @foreach($post->comments as $comment)
        <div class="section">
-         <blockquote>{{$comment->user->name}}</blockquote>
-         <p>{{$comment->text}}</p>
-         <span class="badge">{{$comment->created_at}}</span>
+         <a class="text-info">{{$comment->user->name}}</a>
+         <p>{{$comment->text}}<br>
+          <span class="badge">{{$comment->created_at}}</span>
+         </p>
+         
        </div>
        @endforeach
-       <form class="form comment-form" action="{{route('post.comment'
-       ,['user_id'=>Auth::user()->id,'post_id'=>$post->id])}}">
-         
-         @csrf
+       <div class="separator"></div>
+       <span class="status text-success text-bold"></span><br>
+       @if(Auth::check())
           <div class="form-group">
             <textarea name="text" multiline required
             >
           </textarea><br>
           </div>
-          <input id="submit-comment" type="submit" class="btn-small  btn-secondary"
-            value="Comment" />
-       </form>
+          <button id="comment-submit" class="btn btn-success"
+             data-url="{{route('post.comment',['user_id'=>Auth::user()->id,'post_id'=>$post->id])}}">Comment</button>
+       @endif
    @endif
+
 @endsection

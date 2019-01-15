@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Comment;
 class CommentsController extends Controller
 {
     function store(Request $request, $user_id, $post_id){
@@ -15,6 +15,6 @@ class CommentsController extends Controller
     		]
     	);
     	$comment->save();
-    	return back();
+    	return response()->json(['message'=>'Your comment has been saved.'], 200);
     }
 }

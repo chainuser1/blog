@@ -40,7 +40,7 @@ Route::middleware(['auth.basic'])->group(function(){
 
     //comment routing map
 
-    Route::post('post/{user_id}/{post_id}',
+    Route::post('post/{user_id}/{post_id}/comment',
        'CommentsController@store')->name('post.comment');
 });
 
