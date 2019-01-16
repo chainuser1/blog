@@ -30,6 +30,7 @@ Route::put('posts/{id}/update','PostsController@update')->name('post.update')
 Route::get('/posts/{id}/details/{title}', 
 	'PostsController@view_details')
     ->name('post.details');
+
 Route::middleware(['auth.basic'])->group(function(){
 	Route::get('posts/{id}/edit','PostsController@edit')
 	->name('post.edit');
@@ -43,4 +44,9 @@ Route::middleware(['auth.basic'])->group(function(){
     Route::post('post/{user_id}/{post_id}/comment',
        'CommentsController@store')->name('post.comment');
 });
+
+Route::post('comment/{id}/like','LikesController@like')
+       ->name('comment.like');
+Route::post('comment/{id}/dislike','LikesController@dislike')
+       ->name('comment.dislike');       
 
