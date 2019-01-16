@@ -42,6 +42,6 @@ $(document).ready(function(){
          var num = parseInt($(this).siblings(".number-likes").text());
          num++;
          $(this).siblings(".number-likes").text(num);
-         ajax_like(1,url)
+         ajax_like(1,url);
      })
 })
