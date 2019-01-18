@@ -48,5 +48,9 @@ Route::middleware(['auth.basic'])->group(function(){
 Route::get('comment/{id}/like','LikesController@like')
        ->name('comment.like');
 Route::get('comment/{id}/dislike','LikesController@dislike')
-       ->name('comment.dislike');       
+       ->name('comment.dislike');  
+Route::get('profile/{user_id}/view','ProfileController@index') 
+       ->name('profile');
+Route::post('profile/update','ProfileController@update')
+       ->name('profile.edit');
 
