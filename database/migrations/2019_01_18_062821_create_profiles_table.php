@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateProfilesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.  
      *
      * @return void
      */
@@ -15,7 +15,7 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->unique();
             $table->string('address', 255);
             $table->string('prof_pic', 255);
             $table->date('birthdate');

@@ -8,14 +8,19 @@ use Carbon\Carbon;
 class Profile extends Model
 {
     protected $fillable = ['birthdate', 'prof_pic','address','user_id'];
+    protected $append = ['age', 'birthday'];
     public $timestamps = false;
 
     public function user(){
     	return $this->belongsTo(User::class);
     }
     //return age
-    public function getBirthdateAttribute($value){
+    public function getAgeAttribute(){
     	$date=Carbon::now();
-    	return $date->diffInYears($value);
+    	return $date->diffInYears($this->attributes['birthdate']);
+    }
+
+    public function getBirthdayAttribute(){
+    	
     }
 }
