@@ -45,8 +45,8 @@ Route::middleware(['auth.basic'])->group(function(){
        'CommentsController@store')->name('post.comment');
 });
 
-Route::post('comment/{id}/like','LikesController@like')
+Route::get('comment/{id}/like','LikesController@like')
        ->name('comment.like');
-Route::post('comment/{id}/dislike','LikesController@dislike')
+Route::get('comment/{id}/dislike','LikesController@dislike')
        ->name('comment.dislike');       
 

@@ -18,10 +18,10 @@ class Like extends Model
      	return $value;
      }
     public function comment(){
-    	return $this->belongsTo('App\Comment');
+    	return $this->belongsTo(App\Comment::class);
     }
 
     public function user(){
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo(App\User::class);
     }
 }

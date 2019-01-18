@@ -2,7 +2,8 @@
 @section('content')
 
 <div class="col-md-7">
-    <table  class="table">
+    @if($posts->count()!=null)
+      <table  class="table">
         <thead class=" thead-dark text-info">
             <th>User</th>
             <th class="">Post ID</th>
@@ -12,7 +13,6 @@
             <th class="text-center"  colspan="3">Action</th>
         </thead>
         <tbody>
-          @if(!empty($posts))
             @foreach($posts as $post)
            <tr>
             <td><a>{{$post->user->name}}</a></td>
@@ -30,12 +30,10 @@
             <td><a  class="btn btn-danger" href="{{route('post.delete',$post->id)}}">Delete</a></td>
         </tr>
         @endforeach
-      @else
-        <tr class="text-danger" colspan="6">
-            <td>There are no posts vailable</td>
-        </tr>
-       @endif 
      </tbody>
     </table>
-</div>s
+    @else
+     <h4 class="text-secondary alert-warning">Not Found!!!</h4>
+    @endif
+</div>
 @endsection
