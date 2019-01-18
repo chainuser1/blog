@@ -6,28 +6,7 @@
 
 </head>
 <body>
-<<<<<<< HEAD
-        <nav class="navbar navbar-dark navbar-expand bg-secondary">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div class="collapse navbar-collapse">
-                    {{Form::open(['route'=>'post.find','method'=>'get', 'class'=>'form-inline'])}}
-                      <input type="search" class="form-control" name="search"
-                      placeholder="Search Blog" required/>
-                   {{Form::close()}}
-                </div>
-            </div>
-        </nav><br>
-        <div class="col-md-7">
-            @yield('content')
-       </div>
-=======
+
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
       <a class="navbar-brand" href="#">{{config('app.name')}}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,7 +75,7 @@
 <main role="main" class="container">
   @yield('content')
 </main><!-- /.container -->
->>>>>>> 93a78ab8c6e4cf205ecdc77f3b317a314bb624a1
+
  {{Html::script('js/app.js')}}
  {{Html::script('js/custom.js')}}
  {{Html::script('js/comment-ajax.js')}}

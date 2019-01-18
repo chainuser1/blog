@@ -23,7 +23,7 @@
             <a class="text-info number-likes">
               {{$comment->likes->count()!=null?$comment->likes->count():0}}
             </a>
-<<<<<<< HEAD
+
             
             @if(Auth::check())
                <?php 
@@ -38,24 +38,7 @@
               {{$text}}
             </a>
             @else
-            <a href="{{route('login')}}" class="text-danger">Login</a>
-=======
-            @if(Auth::check())
-            <?php
-            $text='Like';
-              foreach ($comment->likes as $like) {
-                if($like->user_id == Auth::user()->id)
-                  $text='Unlike';
-              }
-            ?>
-            <a data-url="{{route('comment.like',$comment->id)}}"  class="text-info status">
-              {{$text}}
-            </a>
-            @lse
-            <a href="{{route('login')}}"  class="text-danger">
-              Login
-            </a>
->>>>>>> 93a78ab8c6e4cf205ecdc77f3b317a314bb624a1
+             <a href="{{route('login')}}" class="text-danger">Login</a>
             @endif
           </span>
          </p>

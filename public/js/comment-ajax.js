@@ -25,12 +25,12 @@ $(document).ready(function(){
      });
 
    })
-<<<<<<< HEAD
+
    //asynchronous like
-  function ajax_like(url){
-=======
+  
+
   function ajax_like(status, url, elmObj){
->>>>>>> 93a78ab8c6e4cf205ecdc77f3b317a314bb624a1
+ 
        $.ajax({
           url: url,
           success: function(data){
@@ -40,35 +40,13 @@ $(document).ready(function(){
        });
     }
    //asynchronous unlike
-   function ajax_dislike(url){
-     $.ajax({
-        url:url,
-        success: function(data){
-          alert(data.msg);
-        }
-     });
-   }
+   
    
    //like functionality 
    //update status asynchronously
-<<<<<<< HEAD
-   $('a.status').click(function(e){
-         var url=$(this).attr('data-url');
-         var num = parseInt($(this).siblings(".number-likes").text());  
-         switch($(this).text().trim()){
-           case 'Like':
-              $(this).text('Unlike');
-              num++;
-              $(this).siblings(".number-likes").text(num);
-              ajax_like(url);
-              break;
-           case 'Unlike':
-              $(this).text('Like');
-              new_url=url.replace('like','dislike');
-              num--;
-              $(this).siblings(".number-likes").text(num);
-              ajax_dislike(new_url);
-=======
+
+   
+
    function ajax_unlike(url, elmObj){
      $.ajax({
        url:url,
@@ -94,7 +72,7 @@ $(document).ready(function(){
               elmObj.text(num);
               ajax_unlike(url, $(this)); 
               break;
->>>>>>> 93a78ab8c6e4cf205ecdc77f3b317a314bb624a1
-         }
+
+        }
      })
 })
