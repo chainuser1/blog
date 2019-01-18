@@ -23,11 +23,17 @@ class LikesController extends Controller
     }
     
     function dislike($id){
+<<<<<<< HEAD
     	$like=Like::where('user_id','=',Auth::user()->id)
     			  ->where('comment_id','=',$id)
     	          ->delete();
         	return response()
               ->json(['msg'=>'Unliked successful'],200);
+=======
+          Like::where('user_id','=',Auth::user()->id)
+    	             ->where('comment_id','=',$id)->delete();
+          return response()->json(['msg'=>'You just unliked a comment!'], 200);
+>>>>>>> 93a78ab8c6e4cf205ecdc77f3b317a314bb624a1
     }
     
 }
