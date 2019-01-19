@@ -10,7 +10,7 @@ class Profile extends Model
     protected $fillable = ['birthdate', 'prof_pic','address','user_id'];
     protected $append = ['age', 'birthday'];
     public $timestamps = false;
-
+    
     public function user(){
     	return $this->belongsTo(User::class);
     }
@@ -19,8 +19,9 @@ class Profile extends Model
     	$date=Carbon::now();
     	return $date->diffInYears($this->attributes['birthdate']);
     }
-
-    public function getBirthdayAttribute(){
-    	
+    
+    public function getBirthdateAttribute($value){
+    	return date('M d, Y', strtotime($value));
     }
+
 }

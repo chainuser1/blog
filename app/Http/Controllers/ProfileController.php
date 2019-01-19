@@ -15,8 +15,8 @@ class ProfileController extends Controller
     }
 
     public function index($user_id){
-       $profile=Profile::where('user_id','=',$user_id);
-       if(!$profile)
+       $profile=Profile::where('user_id','=',$user_id)->get();
+       if($profile->count()!=null)
        		return view('profile.view_profile')
        	           ->withProfile($profile);
        else
@@ -40,12 +40,12 @@ class ProfileController extends Controller
         ->getClientOriginalExtension();
         //accepts 4 arguments
         //path, the file, your_filename, optional disk
-        $path=$req->file('prof_pic')->storeAs('public/avatars',
+        $path=$req->file('prof_pic')->storeAs('public/avatars/',
         	$file_name.".".$file_extension);
     	$profile=Profile::create([
            'address'=>$req->address,
            'birthdate'=>$req->birthdate,
-           'prof_pic'=>$file_name.$file_extension,
+           'prof_pic'=>$file_name.".".$file_extension,
            'user_id'=>$req->user()->id
     	]);
     	$profile->save();
