@@ -24,6 +24,7 @@
             <a class="text-info number-likes">
               {{$comment->likes->count()!=null?$comment->likes->count():0}}
             </a>
+            @if(Auth::check())
             <?php
             $text='Like';
               foreach ($comment->likes as $like) {
@@ -34,6 +35,11 @@
             <a data-url="{{route('comment.like',$comment->id)}}"  class="text-info status">
               {{$text}}
             </a>
+            @lse
+            <a href="{{route('login')}}"  class="text-danger">
+              Login
+            </a>
+            @endif
           </span>
          </p>
          
