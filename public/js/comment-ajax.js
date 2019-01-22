@@ -20,28 +20,48 @@ $(document).ready(function(){
            $(this).siblings(".status").text(data.message)
         }
      }).always(function(){
-     	location.reload()
+     	  location.reload()
      });
 
    })
-  function ajax_like(status, url){
+  function ajax_like(status, url, elmObj){
        $.ajax({
           url: url,
           type: 'POST',
           data: {status: status},
           success: function(data){
-            alert(data.msg)
+            elmObj.delay(500).text(data.msg)
+            elmObj.text('Unlike')
           }
        });
     }
    //like functionality 
    //update status asynchronously
-   
+   function ajax_unlike(url, elmObj){
+     $.ajax({
+       url:url,
+       success:function(data){
+        elmObj.delay(500).text(data.msg)
+        elmObj.text('Like')
+       }
+     })
+   }
    $('a.status').click(function(e){
          var url=$(this).attr('data-url');
          var num = parseInt($(this).siblings(".number-likes").text());
-         num++;
-         $(this).siblings(".number-likes").text(num);
-         ajax_like(1,url)
+         var elmObj = $(this).siblings(".number-likes")
+         switch($(this).text().trim()){
+            case 'Like':
+              num++;
+              elmObj.text(num);
+              ajax_like(1,url,$(this));
+              break;
+            case 'Unlike':
+              num--;
+              url=url.replace('like','dislike')
+              elmObj.text(num);
+              ajax_unlike(url, $(this)); 
+              break;
+         }
      })
 })
